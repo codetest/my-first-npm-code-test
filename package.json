@@ -1,11 +1,39 @@
 {
   "name": "my-first-npm-code-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "first vue image load component within npm repository",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/.bin/webpack --config ./build/webpack.config.js"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "codetest",
+  "keywords": [
+    "vue",
+    "npm",
+    "typescript"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codetest/my-first-npm-code-test.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "style-loader": "^1.1.3",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-loader": "^15.9.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vue-property-decorator": "^8.4.1"
+  }
 }

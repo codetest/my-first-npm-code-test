@@ -10,11 +10,9 @@ module.exports = {
         extensions: [".ts"]
     },
     output: {
-        libraryTarget: 'commonjs',
         filename: 'index.js',
         path: path.resolve(__dirname, '../dist')
     },
-    target: 'node',
     module: {
         rules: [
             {

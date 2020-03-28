@@ -4,7 +4,7 @@ const path = require("path")
 
 module.exports = {
     entry: {
-        "index": "./index.ts"
+        "index": "./src/app.vue"
     },
     resolve: {
         extensions: [".ts"]

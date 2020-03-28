@@ -4,15 +4,17 @@ const path = require("path")
 
 module.exports = {
     entry: {
-        "index": "./src/app.vue"
+        "index": "./index.ts"
     },
     resolve: {
         extensions: [".ts"]
     },
     output: {
+        libraryTarget: 'commonjs',
         filename: 'index.js',
         path: path.resolve(__dirname, '../dist')
     },
+    devtool: "",
     module: {
         rules: [
             {

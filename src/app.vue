@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-show="showLoading" :style="Style" class="loading"></div>
+        <div v-show="showLoading" :style="StyleOpt" class="loading"></div>
         <div v-show="!showLoading" :style="backgrounStyle"/>
     </div>
 </template>
@@ -11,9 +11,9 @@
     @Component({name: "App"})
     export default class App extends Vue{
         @Prop()
-        Src: string;
+        Source: string;
         @Prop()
-        Style: any = {}
+        StyleOpt: any
         showLoading: boolean = false
         backgrounStyle: any = {}
 
@@ -41,8 +41,8 @@
             var dict: any = {
                 "background-image": "url('" + info.Url + "')",
                 "background-position": backgroundPosition,
-                "width": this.Style.width,
-                "height": this.Style.height,
+                "width": this.StyleOpt.width,
+                "height": this.StyleOpt.height,
                 "background-size": backgroundSize
             };
 
@@ -50,8 +50,8 @@
         }
 
         formatStyleOpt(info: ImageInfo) {
-            var dstHeight = parseFloat(this.Style.height);
-            var dstWidth = parseFloat(this.Style.width);
+            var dstHeight = parseFloat(this.StyleOpt.height);
+            var dstWidth = parseFloat(this.StyleOpt.width);
             info = this.adjustImageInfo(info, dstWidth, dstHeight)
             if (info.Width == dstWidth) {
                 var y = (info.Height - dstHeight) / 2;
@@ -62,15 +62,15 @@
                 this.backgrounStyle = this.formatCss(info, x, 0)
             }
 
-            for (var prop in this.Style) {
+            for (var prop in this.StyleOpt) {
                 if (prop !== "width" && prop !== "height") {
-                    this.backgrounStyle[prop] = this.Style[prop]
+                    this.backgrounStyle[prop] = this.StyleOpt[prop]
                 }
             }
         }
 
         onImageUpdate(info: ImageInfo) {
-            if (this.Src === info.Url) {
+            if (this.Source === info.Url) {
                 if (info.Width === 0 || info.Height === 0) {
                     this.showLoading = true
                 }
@@ -83,9 +83,9 @@
 
         mounted() {
             var img = new Image()
-            img.src = this.Src
+            img.src = this.Source
             img.onload = () => {
-                this.onImageUpdate({Width: img.width, Height: img.height, Url: this.Src})
+                this.onImageUpdate({Width: img.width, Height: img.height, Url: this.Source})
             }
 
             img.onerror = () => {
